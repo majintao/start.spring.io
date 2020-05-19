@@ -23,10 +23,7 @@ import io.spring.initializr.web.project.ProjectGenerationInvoker;
 import java.util.Map;
 
 /**
- * A custom {@link ProjectGenerationController} that binds request attributes to a
- * {@link CustomProjectRequest}.
- *
- * @author Stephane Nicoll
+ * 覆盖原本controller, 支持设置自定义请求参数
  */
 class CustomProjectGenerationController extends ProjectGenerationController<CustomProjectRequest> {
 

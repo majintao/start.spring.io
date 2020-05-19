@@ -16,14 +16,11 @@
 
 package io.spring.start.site.web.custom;
 
-import io.spring.initializr.web.project.ProjectRequest;
 import io.spring.initializr.web.project.WebProjectRequest;
 
 /**
- * A custom {@link ProjectRequest} with an additional custom boolean flag. This type has
- * to be public for the {@code customFlag} request attribute to be mapped properly.
- *
- * @author Stephane Nicoll
+ * 自定义参数请求
+ * @author majintao
  */
 public class CustomProjectRequest extends WebProjectRequest {
 

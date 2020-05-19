@@ -19,10 +19,9 @@ package io.spring.start.site.web.custom;
 import io.spring.initializr.generator.project.MutableProjectDescription;
 import io.spring.initializr.generator.project.ProjectDescription;
 
+
 /**
- * A custom {@link ProjectDescription} to convey the additional flags to contributors.
- *
- * @author Stephane Nicoll
+ * 新的自定义项目配置描述
  */
 class CustomProjectDescription extends MutableProjectDescription {
 

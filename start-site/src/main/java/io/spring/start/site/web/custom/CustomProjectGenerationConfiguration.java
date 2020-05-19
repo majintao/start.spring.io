@@ -14,29 +14,37 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
 
-
+/**
+ * 支持自定义请求的配置
+ */
 @Configuration
 public class CustomProjectGenerationConfiguration {
 
-		@Bean
-		CustomProjectGenerationController customProjectGenerationController(InitializrMetadataProvider metadataProvider,
-                                                                            ApplicationContext applicationContext) {
-			ProjectGenerationInvoker<CustomProjectRequest> projectGenerationInvoker = new ProjectGenerationInvoker<>(
-					applicationContext, new CustomProjectRequestToDescriptionConverter());
-			return new CustomProjectGenerationController(metadataProvider, projectGenerationInvoker);
-		}
+    /**
+     * 生成自定义controller
+     * @param metadataProvider
+     * @param applicationContext
+     * @return
+     */
+    @Bean
+    CustomProjectGenerationController customProjectGenerationController(InitializrMetadataProvider metadataProvider,
+                                                                        ApplicationContext applicationContext) {
+        ProjectGenerationInvoker<CustomProjectRequest> projectGenerationInvoker = new ProjectGenerationInvoker<>(
+                applicationContext, new CustomProjectRequestToDescriptionConverter());
+        return new CustomProjectGenerationController(metadataProvider, projectGenerationInvoker);
+    }
 
-		@Bean
-		CustomProjectDescriptionCustomizer customProjectDescriptionCustomizer() {
-			return new CustomProjectDescriptionCustomizer();
-		}
+    @Bean
+    CustomProjectDescriptionCustomizer customProjectDescriptionCustomizer() {
+        return new CustomProjectDescriptionCustomizer();
+    }
 
-		@Bean
-		CustomProjectDescriptionDiffFactory customProjectDescriptionDiffFactory() {
-			return new CustomProjectDescriptionDiffFactory();
-		}
+    @Bean
+    CustomProjectDescriptionDiffFactory customProjectDescriptionDiffFactory() {
+        return new CustomProjectDescriptionDiffFactory();
+    }
 
-	}
+}
 
 // 请求数据转换
 class CustomProjectRequestToDescriptionConverter
@@ -54,21 +62,23 @@ class CustomProjectRequestToDescriptionConverter
 
 }
 
-	class CustomProjectDescriptionCustomizer implements ProjectDescriptionCustomizer {
+class CustomProjectDescriptionCustomizer implements ProjectDescriptionCustomizer {
 
-		@Override
-		public void customize(MutableProjectDescription description) {
-			description.setApplicationName("CustomApp");
-		}
+    @Override
+    public void customize(MutableProjectDescription description) {
+        description.setApplicationName("CustomApp");
+    }
 
-	}
+}
 
-	// 定义字段的感知变化
-	class CustomProjectDescriptionDiffFactory implements ProjectDescriptionDiffFactory {
+/**
+ * 定义参数转换赋值器
+ */
+class CustomProjectDescriptionDiffFactory implements ProjectDescriptionDiffFactory {
 
-		@Override
-		public CustomProjectDescriptionDiff create(ProjectDescription description) {
-			Assert.isInstanceOf(CustomProjectDescription.class, description);
-			return new CustomProjectDescriptionDiff((CustomProjectDescription) description);
-		}
+    @Override
+    public CustomProjectDescriptionDiff create(ProjectDescription description) {
+        Assert.isInstanceOf(CustomProjectDescription.class, description);
+        return new CustomProjectDescriptionDiff((CustomProjectDescription) description);
+    }
 }
