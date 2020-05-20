@@ -21,12 +21,9 @@ import io.spring.initializr.generator.project.ProjectDescriptionDiff;
 import java.util.Objects;
 import java.util.function.BiConsumer;
 
+
 /**
- * Extends the base {@link ProjectDescriptionDiff} to provide convenient diff methods on
- * {@link CustomProjectDescription}.
- *
- * @author Chris Bono
- * @author Stephane Nicoll
+ * 判断处理流程中参数是否变化使用
  */
 class CustomProjectDescriptionDiff extends ProjectDescriptionDiff {
 

@@ -46,7 +46,9 @@ public class CustomProjectGenerationConfiguration {
 
 }
 
-// 请求数据转换
+/**
+ * 自定义数据请求转换器
+ */
 class CustomProjectRequestToDescriptionConverter
         implements ProjectRequestToDescriptionConverter<CustomProjectRequest> {
 

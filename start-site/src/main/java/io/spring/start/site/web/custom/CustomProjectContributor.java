@@ -26,6 +26,9 @@ import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ *
+ */
 class CustomProjectContributor implements ProjectContributor {
 
 	private final ProjectDescription description;
